@@ -1,0 +1,11 @@
+{
+    "appName": {
+        "message": "chatgpt-to-md"
+    },
+    "appShortName": {
+        "message": "chatgpt-to-md"
+    },
+    "appDescription": {
+        "message": "Exports conversations with ChatGPT to a JSON file containing Markdown blocks"
+    }
+}
