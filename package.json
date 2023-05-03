@@ -39,6 +39,8 @@
         }
     },
     "xtbuild": {
+        "source": "src",
+        "js": "./src/parser.js",
         "js_bundles": [
             {
                 "name": "background",
@@ -48,11 +50,12 @@
                 "name": "app",
                 "src": "./src/parser.js"
             }
-        ],
-        "source": "src",
-        "js": "src/parser.js"
+        ]
     },
     "xtstart": {
         "js": "./src/parser.js"
+    },
+    "dependencies": {
+        "sanitize-filename": "^1.6.3"
     }
 }
