@@ -1,9 +1,12 @@
 import TurndownService from "turndown";
 import sanitize from "sanitize-filename";
+import YAML from "yaml";
 
 var responseSelector = "div.markdown.prose:last-of-type";
 var promptSelector = "div.text-base div.flex-col:not(:has(*))";
 var myName = "Me";
+var authorHead = "###";
+var exportTo = "md"
 
 var parser = new DOMParser();
 var doc = null;
@@ -23,7 +26,7 @@ function parse_prompt(message) {
 
 function parse_response(message) {
     let children = message.querySelectorAll(`${responseSelector} > *`);
-    // console.log(message);
+
     let responses = new Array();
     for (let i = 0; i < children.length; i++) {
         if (children[i].tagName === "PRE") {
@@ -48,14 +51,36 @@ function parse_response(message) {
 
 function parse_message(message) {
     if (message.matches(responseSelector)) {
-        return { "ChatGPT": parse_response(message) };
+        let parsed = parse_response(message);
+        return { author: "ChatGPT", messages: parsed, length: parsed.length };
     }
     else if (message.matches(promptSelector)) {
-        return { [myName]: parse_prompt(message) };
+        let parsed = parse_prompt(message);
+        return { author: myName, messages: parsed, length: parsed.length };
     }
     else {
         return null;
     }
+}
+
+function export_as_json(meta, parsed_messages) {
+    return {
+        meta,
+        conversation: parsed_messages
+    }
+}
+
+function export_as_md(meta, parsed_messages) {
+    let yaml_doc = new YAML.Document();
+    yaml_doc.contents = meta;
+
+    let lines = new Array()
+    for (let i = 0; i < parsed_messages.length; i++) {
+        lines.push(`${authorHead} ${parsed_messages[i].author}`);
+        parsed_messages[i].messages.forEach((m) => lines.push(m));
+        lines.push('\n');
+    }
+    return "---\n" + yaml_doc.toString() + "---\n\n" + lines.join('\n');
 }
 
 if (turndownService.codeBlockStyle === "indented") {
@@ -73,14 +98,26 @@ var conversation = doc.getElementsByTagName("main")[0];
 var messages = conversation.querySelectorAll(`*:is(${responseSelector},${promptSelector})`);
 
 var now = new Date();
-var data = {
+var meta = {
     title: doc.querySelector("head > title").textContent,
     date: now.toString(),
     length: messages.length,
-    conversation: new Array()
 };
-messages.forEach((message) => data.conversation.push(parse_message(message)));
+var parsed_messages = new Array();
+messages.forEach((message) => parsed_messages.push(parse_message(message)));
 
-var blob = new Blob([JSON.stringify(data)], { type: "text/plain" });
-console.log(data);
-chrome.runtime.sendMessage({ type: "parse", returnCode: 0, url: URL.createObjectURL(blob), filename: sanitize(`${data.title}.json`) });
+let blob = null;
+let filename = sanitize(meta.title)
+if (exportTo === "md") {
+    blob = new Blob([export_as_md(meta, parsed_messages)], { type: "text/markdown" });
+    filename = filename + ".md";
+}
+else if (exportTo == "json") {
+    blob = new Blob([export_as_json(meta, parse_message)], { type: "application/json" });
+    filename = filename + ".json";
+}
+else {
+    console.error(`Unrecognized export type: ${exportTo}`);
+}
+
+chrome.runtime.sendMessage({ type: "parse", returnCode: 0, url: URL.createObjectURL(blob), filename: filename });

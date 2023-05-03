@@ -6,7 +6,7 @@
     "author": "Derek Doyle",
     "repository": {
         "type": "git",
-        "url": "ENTER GIT REPO URL"
+        "url": "https://github.com/dddoyle1/chatgpt-to-md"
     },
     "scripts": {
         "start": "xt-build -e dev -w",
@@ -56,6 +56,7 @@
         "js": "./src/parser.js"
     },
     "dependencies": {
-        "sanitize-filename": "^1.6.3"
+        "sanitize-filename": "^1.6.3",
+        "yaml": "^2.2.2"
     }
 }
