@@ -20,22 +20,13 @@
     "background": {
         "service_worker": "background.js"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://chat.openai.com/*"
-            ],
-            "js": [
-                "app.js"
-            ]
-        }
-    ],
     "action": {
         "default_icon": {
             "16": "assets/img/16x16.png",
             "24": "assets/img/24x24.png",
             "32": "assets/img/32x32.png"
         },
-        "default_title": "__MSG_appName__"
+        "default_title": "__MSG_appName__",
+        "default_popup": "popup.html"
     }
 }

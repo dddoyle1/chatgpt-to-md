@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --select-border: black;
+    --openai-green: #64d890ff;
+}
+
+html {
+    min-width: 15em;
+    background-color: var(--openai-green);
+    font-family: "Soehne", system-ui, -apple-system;
+}
+
+.custom-select {
+    position: relative;
+}
+
+.select-container {
+    padding-top: 1em;
+    margin: auto;
+    width: 240px;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    font-family: inherit;
+}
+
+.select-container::after {
+    content: "";
+    width: 0.6em;
+    height: 0.4em;
+    background-color: black;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    justify-self: end;
+}
+
+select {
+    appearance: none;
+    background-color: var(--openai-green);
+    border: none;
+    border-radius: 0;
+    /*    padding: 0 1em 0 0; */
+    padding-bottom: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    outline: none;
+    border-bottom: 3px solid black;
+    width: 100%;
+    cursor: pointer;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select,
+.select-container:after {
+    grid-area: select;
+}
+
+.many-select-container {
+    margin: auto;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 80px 80px 80px;
+    justify-content: center;
+}
+
+.many-select {
+    width: 77px;
+    margin-inline: 0 0px;
+}
+
+.many-select>.custom-select {
+    text-align: center;
+}
+
+button {
+    border: none;
+    background-color: var(--openai-green);
+    color: black;
+    width: 240px;
+    height: 40px;
+    margin: auto;
+    margin-top: 8px;
+
+    padding: 5px;
+    text-align: center;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    display: block;
+
+    cursor: pointer;
+    border: 3px solid black;
+}
+
+button:hover {
+    background-color: black;
+    color: var(--openai-green)
+}

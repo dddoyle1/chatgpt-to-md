@@ -12,7 +12,8 @@ chrome.runtime.onMessage.addListener(
 )
 
 chrome.action.onClicked.addListener(async (tab) => {
-    chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["app.js"] }, (results) => {
-        console.log(results);
-    });
+    chrome.action.openPopup();
+    // chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["app.js"] }, (results) => {
+    //     console.log(results);
+    //    });
 });

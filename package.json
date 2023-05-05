@@ -50,6 +50,15 @@
                 "name": "app",
                 "src": "./src/parser.js"
             }
+        ],
+        "html": "./src/popup.html",
+        "scss_bundles": [
+            {
+                "name": "popup",
+                "src": [
+                    "./src/popup.css"
+                ]
+            }
         ]
     },
     "xtstart": {

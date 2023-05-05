@@ -9,6 +9,9 @@
    id="svg5"
    sodipodi:docname="icon.svg"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:export-filename="img\128x128.png"
+   inkscape:export-xdpi="28.779366"
+   inkscape:export-ydpi="28.779366"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +35,7 @@
      inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g7265" />
+     inkscape:current-layer="g15379" />
   <defs
      id="defs2">
     <clipPath
@@ -364,7 +367,7 @@
            d="M 63.051965,84.126648 45.111458,100.0001 76.53538,127.80253 V 112.17765 H 86.945081 V 95.926444 l -5.117001,2.954342 -5.20485,-9.01547 -16.701306,9.642305 z" />
         <path
            id="path12520"
-           style="color:#000000;fill:#64d890;fill-opacity:1;stroke-width:3;stroke-linecap:round;-inkscape-stroke:none"
+           style="color:#000000;fill:#64d890;fill-opacity:1;stroke-width:3;stroke-linecap:round"
            d="m 72.556812,52.465015 -8.367448,41.113252 13.531473,-7.810892 5.204851,9.015987 14.074593,-8.125602 -5.117517,-2.954859 5.205367,-9.01547 -16.701306,-9.642306 14.884879,-4.980057 z" />
       </g>
       <g
