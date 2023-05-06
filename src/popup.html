@@ -4,40 +4,40 @@
 <head>
     <title>Export Data</title>
     <link rel="stylesheet" type="text/css" href="popup.css">
-
 </head>
 
 <body>
 
     <div class="select-container">
-        <select class="custom-select" id="export-type" title="Format">
-            <option value="" disabled selected hidden>Format</option>
+        <select class="custom-select" id="exportType" title="Format">
+            <option value="" disabled>Format</option>
+            <option value="md" selected>Markdown</option>
             <option value="json">JSON</option>
-            <option value="md">Markdown</option>
         </select>
     </div>
 
     <div class="select-container">
-        <select class="custom-select" id="header-style" title="Header Style">
-            <option value="" disabled selected hidden>Header Style</option>
+        <select class="custom-select" id="headerStyle" title="Header Style">
+            <option value="" disabled>Header Style</option>
+            <option value="atx" selected>ATX</option>
             <option value="setext">Setext</option>
-            <option value="atx">ATX</option>
         </select>
     </div>
 
     <div class="select-container">
-        <select class="custom-select" id="code-block-style" title="Code Block Style">
-            <option value="" disabled selected hidden>Code Block Style</option>
-            <option value="indented">Indented</option>
-            <option value="```">Fenced (```)</option>
+        <select class="custom-select" id="codeBlockStyle" title="Code Block Style">
+            <option value="" disabled>Code Block Style</option>
+            <option value="```" selected>Fenced (```)</option>
             <option value="~~~">Fenced (~~~)</option>
+            <option value="indented">Indented</option>
+
         </select>
     </div>
 
 
     <div class="many-select-container">
         <div class="select-container many-select">
-            <select class="custom-select" id="code-block-style" title="Bullets">
+            <select class="custom-select" id="bulletListMarker" title="Bullets">
                 <option value="" disabled>Bullets</option>
                 <option value="-" selected>-</option>
                 <option value="*">*</option>
@@ -45,14 +45,14 @@
             </select>
         </div>
         <div class="select-container many-select" style="justify-self:center;">
-            <select class="custom-select" id="code-block-style" title="Strong">
+            <select class="custom-select" id="strongDelimiter" title="Strong">
                 <option value="" disabled>Strong</option>
                 <option value="**" selected>**</option>
                 <option value="__">__</option>
             </select>
         </div>
         <div class="select-container many-select" style="justify-self:end;">
-            <select class="custom-select" id="code-block-style" title="Emphasis">
+            <select class="custom-select" id="emDelimiter" title="Emphasis">
                 <option value="" disabled>Emphasis</option>
                 <option value="_" selected>_</option>
                 <option value="*">*</option>
@@ -60,10 +60,9 @@
         </div>
     </div>
 
-    <button type="button">Export</button>
-
-
-
+    <button type="button" id="exportButton">Export</button>
 </body>
+
+<script src="popup.js"></script>
 
 </html>

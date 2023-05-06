@@ -40,7 +40,7 @@
     },
     "xtbuild": {
         "source": "src",
-        "js": "./src/parser.js",
+        "js": "./src/*.js",
         "js_bundles": [
             {
                 "name": "background",
@@ -49,6 +49,10 @@
             {
                 "name": "app",
                 "src": "./src/parser.js"
+            },
+            {
+                "name": "popup",
+                "src": "./src/popup.js"
             }
         ],
         "html": "./src/popup.html",
