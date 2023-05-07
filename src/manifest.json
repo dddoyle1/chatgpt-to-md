@@ -12,7 +12,8 @@
         "tabs",
         "activeTab",
         "scripting",
-        "downloads"
+        "downloads",
+        "storage"
     ],
     "icons": {
         "128": "assets/img/128x128.png"
@@ -20,6 +21,14 @@
     "background": {
         "service_worker": "background.js"
     },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*"
+            ],
+            "js": "parser"
+        }
+    ],
     "action": {
         "default_icon": {
             "16": "assets/img/16x16.png",

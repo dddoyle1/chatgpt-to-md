@@ -47,7 +47,7 @@
                 "src": "./src/background.js"
             },
             {
-                "name": "app",
+                "name": "parser",
                 "src": "./src/parser.js"
             },
             {

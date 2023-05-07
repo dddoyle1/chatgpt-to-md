@@ -1,3 +1,12 @@
+const DEFAULT_OPTIONS = {
+    exportType: "md",
+    headerStyle: "atx",
+    codeBlockStyle: "```",
+    bulletListMarker: "-",
+    strongDelimiter: "**",
+    emDelimiter: "_"
+}
+
 function get_options() {
     var options = {
         exportType: document.getElementById("exportType").value,
@@ -7,10 +16,26 @@ function get_options() {
         strongDelimiter: document.getElementById("strongDelimiter").value,
         emDelimiter: document.getElementById("emDelimiter").value
     }
-    console.log(options);
-    //chrome.runtime.sendMessage({ type: "export", options: options });
-    window.close();
     return options;
+}
+
+function set_options(options) {
+    document.getElementById("exportType").value = options.exportType;
+    document.getElementById("headerStyle").value = options.headerStyle;
+    document.getElementById("codeBlockStyle").value = options.codeBlockStyle;
+    document.getElementById("bulletListMarker").value = options.bulletListMarker;
+    document.getElementById("strongDelimiter").value = options.strongDelimiter;
+    document.getElementById("emDelimiter").value = options.emDelimiter;
+}
+
+function load_options() {
+    chrome.storage.local.get({ options: DEFAULT_OPTIONS }, (items) => {
+        set_options(items.options)
+    })
+}
+
+function save_options(options) {
+    chrome.storage.local.set({ "options": options });
 }
 
 async function getCurrentTab() {
@@ -18,23 +43,35 @@ async function getCurrentTab() {
     return tab;
 }
 
-function dispatch_parser() {
-    // chrome.storage.local.set({ options: get_options() },
-    let options = get_options()
-
+function dispatch_parser(options) {
     getCurrentTab().then((tab) => {
         let target = { tabId: tab.id };
-        chrome.scripting.executeScript(
-            {
-                target: target,
-                files: ["app.js"]
-            },
-            () => {
-                chrome.tabs.sendMessage(tab.id, { type: "export", options: options });
-            }
-        )
+        chrome.tabs.sendMessage(tab.id, { type: "export", options: options });
+        // chrome.scripting.executeScript(
+        //     {
+        //         target: target,
+        //         files: ["app.js"]
+        //     },
+        //     () => {
+        //         chrome.tabs.sendMessage(tab.id, { type: "export", options: options });
+        //     }
+        // )
     });
 }
 
+document.getElementById("exportType").addEventListener("change", () => { save_options(get_options()) })
+document.getElementById("headerStyle").addEventListener("change", () => { save_options(get_options()) })
+document.getElementById("codeBlockStyle").addEventListener("change", () => { save_options(get_options()) })
+document.getElementById("bulletListMarker").addEventListener("change", () => { save_options(get_options()) })
+document.getElementById("strongDelimiter").addEventListener("change", () => { save_options(get_options()) })
+document.getElementById("emDelimiter").addEventListener("change", () => { save_options(get_options()) })
+
+
 var btn = document.getElementById("exportButton");
-btn.addEventListener("click", dispatch_parser);
+btn.addEventListener("click", () => {
+    let options = get_options()
+    window.close();
+    dispatch_parser(options)
+});
+
+window.onload = load_options;
