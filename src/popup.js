@@ -47,15 +47,6 @@ function dispatch_parser(options) {
     getCurrentTab().then((tab) => {
         let target = { tabId: tab.id };
         chrome.tabs.sendMessage(tab.id, { type: "export", options: options });
-        // chrome.scripting.executeScript(
-        //     {
-        //         target: target,
-        //         files: ["app.js"]
-        //     },
-        //     () => {
-        //         chrome.tabs.sendMessage(tab.id, { type: "export", options: options });
-        //     }
-        // )
     });
 }
 

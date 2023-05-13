@@ -44,7 +44,6 @@ select {
     background-color: var(--openai-green);
     border: none;
     border-radius: 0;
-    /*    padding: 0 1em 0 0; */
     padding-bottom: 2px;
     font-family: inherit;
     font-size: inherit;
