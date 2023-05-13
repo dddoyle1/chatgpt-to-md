@@ -53,10 +53,10 @@ function parse_message(message, turndownService) {
 }
 
 function export_as_json(meta, parsed_messages) {
-    return {
+    return JSON.stringify({
         meta,
         conversation: parsed_messages
-    }
+    })
 }
 
 function export_as_md(meta, parsed_messages) {
