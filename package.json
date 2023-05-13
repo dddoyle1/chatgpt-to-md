@@ -55,12 +55,12 @@
                 "src": "./src/popup.js"
             }
         ],
-        "html": "./src/popup.html",
+        "html": "./src/*.html",
         "scss_bundles": [
             {
-                "name": "popup",
+                "name": "style",
                 "src": [
-                    "./src/popup.css"
+                    "./src/style.css"
                 ]
             }
         ]

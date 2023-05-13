@@ -67,11 +67,37 @@ document.getElementById("strongDelimiter").addEventListener("change", () => { sa
 document.getElementById("emDelimiter").addEventListener("change", () => { save_options(get_options()) })
 
 
-var btn = document.getElementById("exportButton");
-btn.addEventListener("click", () => {
+var exportBtn = document.getElementById("exportButton");
+exportBtn.addEventListener("click", () => {
     let options = get_options()
     window.close();
     dispatch_parser(options)
 });
 
-window.onload = load_options;
+var redirectBtn = document.getElementById("redirectButton");
+redirectBtn.addEventListener("click", () => {
+    chrome.tabs.create({ url: 'https://chat.openai.com' })
+})
+
+// change popup display depending on the URL of the current tab
+// this is a workaround since chrome.action.openPopup() is current only supported in 
+// the development build
+function page_setup() {
+    getCurrentTab().then((tab) => {
+        const pattern = new RegExp("^.*\/\/chat.openai.com")
+        // popup opened while chat.openai is opened in current active tab
+        if (pattern.test(tab.url)) {
+            document.getElementById("redirectPage").hidden = true
+            document.getElementById("exportPage").hidden = false;
+            load_options()
+        }
+        // otherwise, offer redirection
+        else {
+            document.getElementById("redirectPage").hidden = false;
+            document.getElementById("exportPage").hidden = true;
+
+        }
+    })
+}
+
+window.onload = page_setup

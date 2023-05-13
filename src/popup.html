@@ -3,64 +3,77 @@
 
 <head>
     <title>Export Data</title>
-    <link rel="stylesheet" type="text/css" href="popup.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 
-    <div class="select-container">
-        <select class="custom-select" id="exportType" title="Format">
-            <option value="" disabled>Format</option>
-            <option value="md" selected>Markdown</option>
-            <option value="json">JSON</option>
-        </select>
-    </div>
-
-    <div class="select-container">
-        <select class="custom-select" id="headerStyle" title="Header Style">
-            <option value="" disabled>Header Style</option>
-            <option value="atx" selected>ATX</option>
-            <option value="setext">Setext</option>
-        </select>
-    </div>
-
-    <div class="select-container">
-        <select class="custom-select" id="codeBlockStyle" title="Code Block Style">
-            <option value="" disabled>Code Block Style</option>
-            <option value="```" selected>Fenced (```)</option>
-            <option value="~~~">Fenced (~~~)</option>
-            <option value="indented">Indented</option>
-
-        </select>
-    </div>
-
-
-    <div class="many-select-container">
-        <div class="select-container many-select">
-            <select class="custom-select" id="bulletListMarker" title="Bullets">
-                <option value="" disabled>Bullets</option>
-                <option value="-" selected>-</option>
-                <option value="*">*</option>
-                <option value="+">+</option>
+    <div class="page" id="exportPage">
+        <div class="select-container">
+            <select class="custom-select" id="exportType" title="Format">
+                <option value="" disabled>Format</option>
+                <option value="md" selected>Markdown</option>
+                <option value="json">JSON</option>
             </select>
         </div>
-        <div class="select-container many-select" style="justify-self:center;">
-            <select class="custom-select" id="strongDelimiter" title="Strong">
-                <option value="" disabled>Strong</option>
-                <option value="**" selected>**</option>
-                <option value="__">__</option>
-            </select>
-        </div>
-        <div class="select-container many-select" style="justify-self:end;">
-            <select class="custom-select" id="emDelimiter" title="Emphasis">
-                <option value="" disabled>Emphasis</option>
-                <option value="_" selected>_</option>
-                <option value="*">*</option>
-            </select>
-        </div>
-    </div>
 
-    <button type="button" id="exportButton">Export</button>
+        <div class="select-container">
+            <select class="custom-select" id="headerStyle" title="Header Style">
+                <option value="" disabled>Header Style</option>
+                <option value="atx" selected>ATX</option>
+                <option value="setext">Setext</option>
+            </select>
+        </div>
+
+        <div class="select-container">
+            <select class="custom-select" id="codeBlockStyle" title="Code Block Style">
+                <option value="" disabled>Code Block Style</option>
+                <option value="```" selected>Fenced (```)</option>
+                <option value="~~~">Fenced (~~~)</option>
+                <option value="indented">Indented</option>
+
+            </select>
+        </div>
+
+
+        <div class="many-select-container">
+            <div class="select-container many-select">
+                <select class="custom-select" id="bulletListMarker" title="Bullets">
+                    <option value="" disabled>Bullets</option>
+                    <option value="-" selected>-</option>
+                    <option value="*">*</option>
+                    <option value="+">+</option>
+                </select>
+            </div>
+            <div class="select-container many-select" style="justify-self:center;">
+                <select class="custom-select" id="strongDelimiter" title="Strong">
+                    <option value="" disabled>Strong</option>
+                    <option value="**" selected>**</option>
+                    <option value="__">__</option>
+                </select>
+            </div>
+            <div class="select-container many-select" style="justify-self:end;">
+                <select class="custom-select" id="emDelimiter" title="Emphasis">
+                    <option value="" disabled>Emphasis</option>
+                    <option value="_" selected>_</option>
+                    <option value="*">*</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" id="exportButton">Export</button>
+    </div>
+    <div class="page" id="redirectPage">
+        <div id="icon" style="margin: auto; display: grid; grid-template-columns: 80px 80px 80px"><img
+                src="assets/img/128x128-black.png" width="64px" height="64px"
+                style="display: inline-block; margin: auto;">
+            <img src="assets/img/128x128-black.png" width="64px" height="64px"
+                style="display: inline-block; margin: auto;">
+            <img src="assets/img/128x128-black.png" width="64px" height="64px"
+                style="display: inline-block; margin: auto;">
+        </div>
+        <button id="redirectButton">Go to chat.openai.com</button>
+    </div>
 </body>
 
 <script src="popup.js"></script>
