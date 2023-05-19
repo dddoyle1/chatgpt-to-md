@@ -1,7 +1,7 @@
 {
     "name": "chatgpt-to-md",
-    "description": "Exports conversations with ChatGPT to a JSON file containing Markdown blocks",
-    "version": "0.0.1",
+    "description": "Exports conversations with ChatGPT to a Markdown or JSON format",
+    "version": "1.0.0",
     "homepage": "http://chrome.google.com/webstore",
     "author": "Derek Doyle",
     "repository": {
