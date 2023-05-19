@@ -1,7 +1,10 @@
 # chatgpt-to-md
 
-Exports conversations with ChatGPT to a JSON file containing Markdown blocks
+![Easily export ChatGPT conversations into markdown text for offline archival](assets/feature_slide_1.png)
+![Formatted code blocks](assets/feature_slide_2.png)
+![Optionally export to JSON for additional processing](assets/feature_slide_3.png)
 
+----
 ## Development 
 
 This extension was created with [Extension CLI](https://oss.mobilefirst.me/extension-cli/)!
@@ -21,19 +24,3 @@ If you find this software helpful [star](https://github.com/MobileFirstLLC/exten
 | `npm run sync` | update config files |
 
 For CLI instructions see [User Guide &rarr;](https://oss.mobilefirst.me/extension-cli/)
-
-### Learn More
-
-**Extension Developer guides**
-
-- [Getting started with extension development](https://developer.chrome.com/extensions/getstarted)
-- Manifest configuration: [version 2](https://developer.chrome.com/extensions/manifest) - [version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- [Permissions reference](https://developer.chrome.com/extensions/declare_permissions)
-- [Chrome API reference](https://developer.chrome.com/docs/extensions/reference/)
-
-**Extension Publishing Guides**
-
-- [Publishing for Chrome](https://developer.chrome.com/webstore/publish)
-- [Publishing for Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/publish/publish-extension)
-- [Publishing for Opera addons](https://dev.opera.com/extensions/publishing-guidelines/)
-- [Publishing for Firefox](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/)
